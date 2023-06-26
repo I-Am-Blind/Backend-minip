@@ -6,9 +6,11 @@ from serpapi import GoogleSearch
 app = Flask(__name__)
 CORS(app)
 
+gugu = 'c93c14079ef1e4900d7279cbb18d3db7d03c822b091e9a031651ea01b9427723'
+
 def get_img(location):
     params = {
-  f"api_key": "89897174d76777754aa3c1718aa2066832fe17e965b61e765e92702fbf573650",
+  f"api_key": {gugu},
   "engine": "google",
   "q": {location},
   "location": "Kerala, India",
@@ -60,7 +62,7 @@ Always use the same format. The places and hotels must be real and not made up.
 def send_img():
     query = request.get_json()
     params = {
-  f"api_key": "89897174d76777754aa3c1718aa2066832fe17e965b61e765e92702fbf573650",
+  f"api_key": {gugu},
   "engine": "google",
   "q": {query['location']},
   "location": "Kerala, India",
@@ -73,3 +75,13 @@ def send_img():
     search = GoogleSearch(params)
     results = search.get_dict()['images_results'][0]
     return results
+
+
+@app.route("/setapikey",methods=['POST'])
+def set_api_key():
+    query = request.get_json()
+    if (query['secret_key'] == '8075850847'):
+     api_key = query['api_key']
+     return f"current api key set to {api_key}"
+    else:
+        return "Invalid secret_key"
