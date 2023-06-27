@@ -1,6 +1,7 @@
 import bardapi
+
 def bard(input):
- token = 'XAjwAcmw3uAlxmdvTdT3HCPDSq8KyVuZD-jwGO6S15PAFKX3Dm7Ah9sC2g-6inJOLIYijQ.'
+ token = 'XQitoCQDhixAQDJR3Rbm0kpVu5XGEvOjXBE0LoY4i77br6lbJ8ogGvZSiQCWxgy7xMGuug.'
  try:
     response = bardapi.core.Bard(token).get_answer(input)
     return response
